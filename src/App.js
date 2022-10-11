@@ -1,41 +1,77 @@
 import "./App.css";
-import logo from "./logo.png";
+import { Routes, Route } from "react-router-dom";
 
+import { RequiresAuth } from "./RequiresAuth";
+import { Explore } from "./components/Explore/Explore";
+import { SingleVideo } from "./components/SingleVideo/SingleVideo";
+import { useSelector } from "react-redux";
+import { PlaylistModal } from "./components/PlaylistModal/PlaylistModal";
+import {
+  LikedVideos,
+  WatchLater,
+  History,
+  Playlist,
+  SinglePlaylist,
+  Login,
+  Signup,
+} from "./pages";
+import { Layout } from "./components/Layout/Layout";
 function App() {
+  const isModalOpen = useSelector(
+    (state) => state.playlist.videoToAddInPlaylist
+  );
+  console.log(!!isModalOpen);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} alt="mockBee logo" width="180" height="180" />
-        <h1 className="brand-title">
-          Welcome to <span>mockBee!</span>
-        </h1>
-        <p className="brand-description">
-          Get started by editing <code>src/App.js</code>
-        </p>
-        <div className="links">
-          <a
-            href="https://mockbee.netlify.app/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Explore mockBee
-          </a>
-          <a
-            href="https://mockbee.netlify.app/docs/api/introduction"
-            target="_blank"
-            rel="noreferrer"
-          >
-            API Documentation
-          </a>
-          <a
-            href="https://github.com/neogcamp/mockBee"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Contribute
-          </a>
-        </div>
-      </header>
+      {!!isModalOpen && <PlaylistModal />}
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Explore />} />
+          <Route
+            path="/liked"
+            element={
+              <RequiresAuth>
+                <LikedVideos />
+              </RequiresAuth>
+            }
+          />
+          <Route
+            path="/later"
+            element={
+              <RequiresAuth>
+                <WatchLater />
+              </RequiresAuth>
+            }
+          />
+          <Route
+            path="/history"
+            element={
+              <RequiresAuth>
+                <History />
+              </RequiresAuth>
+            }
+          />
+          <Route
+            path="/playlist"
+            element={
+              <RequiresAuth>
+                <Playlist />
+              </RequiresAuth>
+            }
+          />
+          <Route
+            path="/playlist/:playlistId"
+            element={
+              <RequiresAuth>
+                <SinglePlaylist />
+              </RequiresAuth>
+            }
+          />
+        </Route>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path=":videoId" element={<SingleVideo />} />
+      </Routes>
     </div>
   );
 }

@@ -1,0 +1,127 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.videocard {
+  width: 80%;
+  margin: 0 auto;
+  border: 8px;
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+}
+
+.videocard_thumbnail {
+  width: 100%;
+}
+
+.videocard_details {
+  display: flex;
+  /* align-items: flex-start; */
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.videocard_channel_logo {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+.videocard_title {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 8px;
+  line-height: 1em;
+  max-height: 2em;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.light_text {
+  color: gray;
+  font-weight: 500;
+}
+.videocard_numbers {
+  display: flex;
+  gap: 0.3rem;
+}
+.small_text {
+  font-size: 0.8rem;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.show_more_icon {
+  align-self: center;
+  font-size: 1.2rem;
+  margin-right: 1rem;
+}
+.show_more_icon:hover {
+  cursor: pointer;
+}
+.action_dialog {
+  position: absolute;
+  top: 95%;
+  left: 30%;
+  background-color: #f1f1f1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0 0.5rem;
+  z-index: 10;
+  min-width: max-content;
+}
+
+.action_button {
+  display: block;
+  border: none;
+  background-color: transparent;
+  padding: 0.5rem;
+  display: flex;
+  gap: 0.3rem;
+  width: 100%;
+  align-items: center;
+  font-size: 1rem;
+  cursor: pointer;
+}
+@media (min-width: 650px) {
+  .videocard {
+    width: 17rem;
+    margin: 0 auto;
+    margin-bottom: 1.5rem;
+  }
+  .videocard_details {
+    align-items: center;
+  }
+}
+
+@media (min-width: 400px) {
+  .action_dialog {
+    left: 40%;
+  }
+}
+
+@media (min-width: 450px) {
+  .action_dialog {
+    left: 45%;
+  }
+}
+@media (min-width: 500px) {
+  .action_dialog {
+    left: 55%;
+  }
+}
+@media (min-width: 650px) {
+  .action_dialog {
+    left: 40%;
+  }
+}

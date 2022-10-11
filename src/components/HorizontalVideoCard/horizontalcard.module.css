@@ -1,0 +1,53 @@
+.horizontal_videocard {
+  display: flex;
+  width: 90%;
+  background-color: #f1f1f1;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 12px;
+  height: 8rem;
+  margin: 0.5rem auto;
+}
+
+.video_thumbnail {
+  height: 8rem;
+  aspect-ratio: 0.7;
+}
+.video_description {
+  line-height: 1.1em;
+  max-height: 2.2em;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.trash_icon {
+  margin-right: 1rem;
+  font-size: 1.3rem;
+  display: block;
+}
+.trash_button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+@media (min-width: 650px) {
+  .horizontal_videocard {
+    height: auto;
+    margin-left: 0;
+  }
+  .video_thumbnail {
+    width: 30%;
+    aspect-ratio: 1/1;
+  }
+}
+
+@media (min-width: 900px) {
+  .horizontal_videocard {
+    width: 80%;
+  }
+  .video_thumbnail {
+    width: 20%;
+  }
+}
